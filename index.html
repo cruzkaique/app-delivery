@@ -11,13 +11,19 @@
   <body>
     <main class="app-shell">
       <section class="topbar" aria-label="Resumo principal">
-        <div>
+        <div class="topbar-copy">
           <p class="eyebrow">Suzuki Yes EN 125</p>
           <h1>Análise de Delivery</h1>
         </div>
-        <div class="goal-card">
+        <div class="goal-stack">
+          <div class="goal-card">
           <span>Meta mensal líquida</span>
           <strong>R$ 2.500,00</strong>
+          </div>
+          <div class="goal-card compact-goal">
+            <span>Base operacional</span>
+            <strong>R$ 0,45/km</strong>
+          </div>
         </div>
       </section>
 
@@ -82,7 +88,10 @@
             </label>
           </div>
 
-          <button class="primary-button" type="submit">Salvar e analisar</button>
+          <button class="primary-button" type="submit">
+            <span aria-hidden="true">+</span>
+            Salvar e analisar
+          </button>
           <p class="hint">O consumo medio e calculado por km rodados dividido pelos litros. Se deixar vazio, o app usa 25 km/L como estimativa.</p>
         </form>
 
