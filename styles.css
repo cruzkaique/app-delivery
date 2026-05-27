@@ -539,3 +539,6 @@ tr:last-child td {
     gap: 5px;
   }
 }
+body {
+    border: 5px solid red;
+}
