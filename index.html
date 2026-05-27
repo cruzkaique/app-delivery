@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Delivery Kaique</title>
+    <meta name="theme-color" content="#0f7a5a">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="topbar" aria-label="Resumo principal">
+        <div>
+          <p class="eyebrow">Suzuki Yes EN 125</p>
+          <h1>Análise de Delivery</h1>
+        </div>
+        <div class="goal-card">
+          <span>Meta mensal líquida</span>
+          <strong>R$ 2.500,00</strong>
+        </div>
+      </section>
+
+      <section class="layout">
+        <form class="panel entry-form" id="entryForm">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Lançamento</p>
+              <h2>Resultado do dia</h2>
+            </div>
+            <button class="icon-button" type="button" id="todayButton" title="Usar data de hoje" aria-label="Usar data de hoje">
+              <span aria-hidden="true">↻</span>
+            </button>
+          </div>
+
+          <label>
+            Data
+            <input type="date" id="date" required>
+          </label>
+
+          <label>
+            Plataforma
+            <input list="platformOptions" id="platform" placeholder="iFood, 99Pop, Uber..." required>
+            <datalist id="platformOptions">
+              <option value="iFood"></option>
+              <option value="99Pop"></option>
+              <option value="Uber"></option>
+              <option value="Rappi"></option>
+              <option value="Loggi"></option>
+            </datalist>
+          </label>
+
+          <div class="form-grid">
+            <label>
+              KM rodados
+              <input type="number" id="km" min="0" step="0.1" placeholder="72" required>
+            </label>
+            <label>
+              Horas
+              <input type="number" id="hours" min="0" step="0.1" placeholder="4" required>
+            </label>
+          </div>
+
+          <label>
+            Faturamento bruto
+            <input type="number" id="revenue" min="0" step="0.01" placeholder="76.10" required>
+          </label>
+
+          <label>
+            Preco da gasolina/L
+            <input type="number" id="gasPrice" min="0" step="0.01" placeholder="6.90" required>
+          </label>
+
+          <div class="form-grid">
+            <label>
+              Litros abastecidos
+              <input type="number" id="fuelLiters" min="0" step="0.01" placeholder="2.88">
+            </label>
+            <label>
+              Custo por km
+              <input type="number" id="operationalCostPerKm" min="0" step="0.01" placeholder="0.45" required>
+            </label>
+          </div>
+
+          <button class="primary-button" type="submit">Salvar e analisar</button>
+          <p class="hint">O consumo medio e calculado por km rodados dividido pelos litros. Se deixar vazio, o app usa 25 km/L como estimativa.</p>
+        </form>
+
+        <section class="panel report-panel">
+          <div class="tabs" role="tablist" aria-label="Relatórios">
+            <button class="tab active" type="button" data-view="daily">Diário</button>
+            <button class="tab" type="button" data-view="weekly">Semanal</button>
+            <button class="tab" type="button" data-view="monthly">Mensal</button>
+          </div>
+
+          <div id="emptyState" class="empty-state">
+            <h2>Nenhum lançamento ainda</h2>
+            <p>Informe o resultado do dia para gerar a primeira análise operacional.</p>
+          </div>
+
+          <div id="report" class="report hidden"></div>
+        </section>
+      </section>
+
+      <section class="panel history-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Base armazenada</p>
+            <h2>Histórico</h2>
+          </div>
+          <div class="history-actions">
+            <button class="ghost-button" type="button" id="exportButton">Exportar</button>
+            <button class="danger-button" type="button" id="clearButton">Limpar</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Plataforma</th>
+                <th>KM</th>
+                <th>Horas</th>
+                <th>Bruto</th>
+                <th>Líquido op.</th>
+                <th>R$/km</th>
+                <th>Km/L</th>
+                <th>Custo/km</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="historyBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
